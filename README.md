@@ -24,6 +24,7 @@ runs on its own. They share one dependency set and one model configuration.
 | 05 | [Deterministic Evaluators](recipes/05-eval-deterministic/) | Fast, no-LLM checks (`Equals`/`Contains`/custom) as a free CI gate that exits non-zero on failure. |
 | 06 | [Trajectory Evaluation](recipes/06-eval-trajectory/) | Evaluate the *path*, not just the answer — did the agent call the right tools, in the right order? |
 | 07 | [Agent Eval Suite](recipes/07-eval-agent-suite/) | Capstone: deterministic + LLM evaluators combined over the real recipe 01 SOP agent. |
+| 08 | [Tool Simulation](recipes/08-eval-tool-simulation/) | Evaluate a tool-using agent with no backend — `ToolSimulator` replaces real tools with LLM-backed, schema-valid, shared-state stand-ins. |
 
 The eval recipes reuse the same `shared/model.py` factory, so the LLM judge runs
 on your `ANTHROPIC_API_KEY` — no Bedrock setup, even though the upstream eval
@@ -83,7 +84,8 @@ aws-strands-recipes/
     ├── 04-eval-output/
     ├── 05-eval-deterministic/
     ├── 06-eval-trajectory/
-    └── 07-eval-agent-suite/
+    ├── 07-eval-agent-suite/
+    └── 08-eval-tool-simulation/
 ```
 
 ## Adding a recipe
