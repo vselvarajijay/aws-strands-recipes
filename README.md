@@ -11,7 +11,6 @@ runs on its own. They share one dependency set and one model configuration.
 | # | Recipe | What it shows |
 | --- | --- | --- |
 | 01 | [SOP Agent](recipes/01-sop-agent/) | An agent that runs a Standard Operating Procedure defined as a markdown system prompt. |
-| 02 | [SOP Verifier](recipes/02-sop-verifier/) | A doer + verifier harness where a second agent checks the SOP transcript completed every step. |
 
 ## Setup
 
@@ -34,7 +33,6 @@ From the repo root:
 
 ```bash
 uv run recipes/01-sop-agent/main.py
-uv run recipes/02-sop-supervised/main.py
 ```
 
 ## Model configuration
@@ -62,8 +60,7 @@ aws-strands-recipes/
 ├── shared/
 │   └── model.py         # one place that configures the model provider
 └── recipes/
-    ├── 01-sop-agent/
-    └── 02-sop-verifier/
+    └── 01-sop-agent/
 ```
 
 ## Adding a recipe

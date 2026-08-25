@@ -37,6 +37,3 @@ over — no external tools required.
 
 To use your own procedure, replace `sop.md`. To triage a different incident,
 edit the `INCIDENT` string in `main.py`.
-
-Recipe 02 runs this same SOP and then adds a second agent that **verifies** each
-step actually went through.
