@@ -16,6 +16,7 @@ runs on its own. They share one dependency set and one model configuration.
 | 02 | [SOP Agent with Interrupt](recipes/02-sop-interrupt/) | An SOP agent that pauses for human approval before a high-impact step, using Strands interrupts (human-in-the-loop). |
 | 03 | [Support Swarm](recipes/03-support-swarm/) | A swarm of specialist agents that self-organize via handoffs to work an enterprise support case — no central router. |
 | 10 | [Agent Snapshots](recipes/10-agent-snapshots/) | Capture agent state as JSON to branch a conversation from a shared checkpoint and restore it into a new agent. |
+| 11 | [Memory Across CLI Runs](recipes/11-memory-cli/) | An agent that remembers you between separate runs — durable facts saved to a local JSON file via `MemoryManager` + `TestMemoryStore`. |
 
 **Evaluating agents** (with the [`strands-agents-evals`](https://strandsagents.com/) SDK)
 
@@ -86,7 +87,8 @@ aws-strands-recipes/
     ├── 05-eval-deterministic/
     ├── 06-eval-trajectory/
     ├── 07-eval-agent-suite/
-    └── 08-eval-tool-simulation/
+    ├── 08-eval-tool-simulation/
+    └── 11-memory-cli/
 ```
 
 ## Adding a recipe
