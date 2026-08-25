@@ -10,8 +10,8 @@ runs on its own. They share one dependency set and one model configuration.
 
 | # | Recipe | What it shows |
 | --- | --- | --- |
-| 01 | [SOP Agent](recipes/01-sop-agent/) | An agent that executes a Standard Operating Procedure step by step, using tools. |
-| 02 | [Supervised SOP Agent](recipes/02-sop-supervised/) | A worker + supervisor harness where a second agent verifies each step before the procedure advances. |
+| 01 | [SOP Agent](recipes/01-sop-agent/) | An agent that runs a Standard Operating Procedure defined as a markdown system prompt. |
+| 02 | [SOP Verifier](recipes/02-sop-verifier/) | A doer + verifier harness where a second agent checks the SOP transcript completed every step. |
 
 ## Setup
 
@@ -63,7 +63,7 @@ aws-strands-recipes/
 │   └── model.py         # one place that configures the model provider
 └── recipes/
     ├── 01-sop-agent/
-    └── 02-sop-supervised/
+    └── 02-sop-verifier/
 ```
 
 ## Adding a recipe

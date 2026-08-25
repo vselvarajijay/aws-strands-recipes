@@ -1,25 +1,18 @@
 # Recipe 01 — SOP Agent
 
-An agent that executes a **Standard Operating Procedure**: you give it a
-procedure written as plain-language steps plus a scenario, and it works through
-the steps in order, calling tools to actually perform each one.
+An agent that runs a **Standard Operating Procedure**. The SOP is a markdown
+file used as the agent's system prompt; you kick it off with a single prompt and
+the agent works through the steps and produces the report.
 
-## What it shows
-
-- Driving an agent's behavior with an SOP loaded from a markdown file (swap in
-  your own without editing code).
-- Giving the agent tools so each step does real work — and printing tool calls
-  so you can watch the procedure being followed.
-- A simple, single-agent pattern with no orchestration. (Recipe 02 adds a
-  supervisor that verifies each step.)
+This mirrors the [strands-agents/agent-sop](https://github.com/strands-agents/agent-sop)
+pattern: the SOP *is* the agent's instructions.
 
 ## Files
 
 | File | Purpose |
 | --- | --- |
-| `sops/incident_triage.md` | Example SOP — a 6-step production incident triage. |
-| `agent.py` | The SOP agent and its (mock) tools. |
-| `main.py` | Loads the SOP + scenario and runs the agent. |
+| `sop.md` | The SOP — an incident-triage procedure. Edit this to change behavior. |
+| `main.py` | Loads `sop.md` as the system prompt and runs the agent on an incident. |
 
 ## Run it
 
@@ -29,24 +22,21 @@ From the repo root (after completing the setup in the top-level README):
 uv run recipes/01-sop-agent/main.py
 ```
 
-Use your own procedure:
-
-```bash
-uv run recipes/01-sop-agent/main.py path/to/your_sop.md
-```
-
 ## How it works
 
-`agent.py` builds a `strands.Agent` with:
+```python
+SOP = (HERE / "sop.md").read_text()
+agent = Agent(model=build_model(), system_prompt=SOP)
+agent(f"Start the incident triage SOP.\n\n{INCIDENT}")
+```
 
-- a **system prompt** instructing it to follow the SOP one step at a time and
-  record a finding for each step, and
-- a set of `@tool` functions (`check_service_health`, `search_logs`,
-  `page_oncall`, `record_finding`) that stand in for a real ops stack.
+The SOP defines six numbered steps and an output format (each step under a
+`Step N: <title>` heading, ending with a `TRIAGE SUMMARY`). The incident
+telemetry is passed in the kickoff message, so the agent has real data to reason
+over — no external tools required.
 
-`main.py` reads the SOP markdown, appends it to the scenario, and calls the
-agent. The agent decides which tool to use for each step and produces a final
-`TRIAGE SUMMARY`.
+To use your own procedure, replace `sop.md`. To triage a different incident,
+edit the `INCIDENT` string in `main.py`.
 
-The tools here are mocks that return canned data — replace their bodies with
-real integrations to make this useful.
+Recipe 02 runs this same SOP and then adds a second agent that **verifies** each
+step actually went through.
