@@ -15,6 +15,7 @@ runs on its own. They share one dependency set and one model configuration.
 | 01 | [SOP Agent](recipes/01-sop-agent/) | An agent that runs a Standard Operating Procedure defined as a markdown system prompt. |
 | 02 | [SOP Agent with Interrupt](recipes/02-sop-interrupt/) | An SOP agent that pauses for human approval before a high-impact step, using Strands interrupts (human-in-the-loop). |
 | 03 | [Support Swarm](recipes/03-support-swarm/) | A swarm of specialist agents that self-organize via handoffs to work an enterprise support case — no central router. |
+| 10 | [Agent Snapshots](recipes/10-agent-snapshots/) | Capture agent state as JSON to branch a conversation from a shared checkpoint and restore it into a new agent. |
 
 **Evaluating agents** (with the [`strands-agents-evals`](https://strandsagents.com/) SDK)
 
