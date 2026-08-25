@@ -11,6 +11,7 @@ runs on its own. They share one dependency set and one model configuration.
 | # | Recipe | What it shows |
 | --- | --- | --- |
 | 01 | [SOP Agent](recipes/01-sop-agent/) | An agent that runs a Standard Operating Procedure defined as a markdown system prompt. |
+| 02 | [SOP Agent with Interrupt](recipes/02-sop-interrupt/) | An SOP agent that pauses for human approval before a high-impact step, using Strands interrupts (human-in-the-loop). |
 
 ## Setup
 
