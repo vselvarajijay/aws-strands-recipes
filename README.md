@@ -17,6 +17,7 @@ runs on its own. They share one dependency set and one model configuration.
 | 03 | [Support Swarm](recipes/03-support-swarm/) | A swarm of specialist agents that self-organize via handoffs to work an enterprise support case — no central router. |
 | 10 | [Agent Snapshots](recipes/10-agent-snapshots/) | Capture agent state as JSON to branch a conversation from a shared checkpoint and restore it into a new agent. |
 | 11 | [Memory Across CLI Runs](recipes/11-memory-cli/) | An agent that remembers you between separate runs — durable facts saved to a local JSON file via `MemoryManager` + `TestMemoryStore`. |
+| 12 | [Effective Guardrails](recipes/12-guardrails/) | Layered safety as defense in depth — input filter, tool/action gate, and output PII scrub via Strands hooks (plus a managed Amazon Bedrock Guardrails example). |
 
 **Evaluating agents** (with the [`strands-agents-evals`](https://strandsagents.com/) SDK)
 
@@ -27,6 +28,8 @@ runs on its own. They share one dependency set and one model configuration.
 | 06 | [Trajectory Evaluation](recipes/06-eval-trajectory/) | Evaluate the *path*, not just the answer — did the agent call the right tools, in the right order? |
 | 07 | [Agent Eval Suite](recipes/07-eval-agent-suite/) | Capstone: deterministic + LLM evaluators combined over the real recipe 01 SOP agent. |
 | 08 | [Tool Simulation](recipes/08-eval-tool-simulation/) | Evaluate a tool-using agent with no backend — `ToolSimulator` replaces real tools with LLM-backed, schema-valid, shared-state stand-ins. |
+| 09 | [User Simulation](recipes/09-user-simulation/) | Evaluate a *multi-turn* agent by simulating the user with an LLM — `ActorSimulator` role-plays a persona and goal turn by turn. |
+| 13 | [Chaos Testing](recipes/13-eval-chaos/) | Does the agent survive when its tools fail? Inject timeouts/errors/corrupted data with `ChaosPlugin` and score resilience — no agent code changes. |
 
 The eval recipes reuse the same `shared/model.py` factory, so the LLM judge runs
 on your `ANTHROPIC_API_KEY` — no Bedrock setup, even though the upstream eval
@@ -88,7 +91,11 @@ aws-strands-recipes/
     ├── 06-eval-trajectory/
     ├── 07-eval-agent-suite/
     ├── 08-eval-tool-simulation/
-    └── 11-memory-cli/
+    ├── 09-user-simulation/
+    ├── 10-agent-snapshots/
+    ├── 11-memory-cli/
+    ├── 12-guardrails/
+    └── 13-eval-chaos/
 ```
 
 ## Adding a recipe
