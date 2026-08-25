@@ -1,0 +1,11 @@
+[project]
+name = "aws-strands-recipes"
+version = "0.1.0"
+description = "Runnable recipes for building agents with the AWS Strands Agents SDK"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv>=1.2.3",
+    "strands-agents-tools>=0.8.6",
+    "strands-agents[anthropic]>=1.53.0",
+]
