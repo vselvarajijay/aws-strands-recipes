@@ -11,8 +11,12 @@ __pycache__/
 # Environment secrets
 .env
 
-# Local memory stores (recipe 09)
+# Local memory stores (recipe 11)
 .memory/
+
+# Claude Code local settings / state
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
 
 # OS / editor
 .DS_Store
