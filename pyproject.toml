@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "python-dotenv>=1.2.3",
+    "strands-agents-evals>=1.2.0",
     "strands-agents-tools>=0.8.6",
     "strands-agents[anthropic]>=1.53.0",
 ]

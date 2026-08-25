@@ -8,11 +8,26 @@ runs on its own. They share one dependency set and one model configuration.
 
 ## Recipes
 
+**Building agents**
+
 | # | Recipe | What it shows |
 | --- | --- | --- |
 | 01 | [SOP Agent](recipes/01-sop-agent/) | An agent that runs a Standard Operating Procedure defined as a markdown system prompt. |
 | 02 | [SOP Agent with Interrupt](recipes/02-sop-interrupt/) | An SOP agent that pauses for human approval before a high-impact step, using Strands interrupts (human-in-the-loop). |
 | 03 | [Support Swarm](recipes/03-support-swarm/) | A swarm of specialist agents that self-organize via handoffs to work an enterprise support case — no central router. |
+
+**Evaluating agents** (with the [`strands-agents-evals`](https://strandsagents.com/) SDK)
+
+| # | Recipe | What it shows |
+| --- | --- | --- |
+| 04 | [Output Evaluation](recipes/04-eval-output/) | The foundational eval: score an agent's answers against a rubric with an LLM-as-judge. |
+| 05 | [Deterministic Evaluators](recipes/05-eval-deterministic/) | Fast, no-LLM checks (`Equals`/`Contains`/custom) as a free CI gate that exits non-zero on failure. |
+| 06 | [Trajectory Evaluation](recipes/06-eval-trajectory/) | Evaluate the *path*, not just the answer — did the agent call the right tools, in the right order? |
+| 07 | [Agent Eval Suite](recipes/07-eval-agent-suite/) | Capstone: deterministic + LLM evaluators combined over the real recipe 01 SOP agent. |
+
+The eval recipes reuse the same `shared/model.py` factory, so the LLM judge runs
+on your `ANTHROPIC_API_KEY` — no Bedrock setup, even though the upstream eval
+docs default to Bedrock. (Recipe 05 needs no key at all: it calls no model.)
 
 ## Setup
 
@@ -64,7 +79,11 @@ aws-strands-recipes/
 └── recipes/
     ├── 01-sop-agent/
     ├── 02-sop-interrupt/
-    └── 03-support-swarm/
+    ├── 03-support-swarm/
+    ├── 04-eval-output/
+    ├── 05-eval-deterministic/
+    ├── 06-eval-trajectory/
+    └── 07-eval-agent-suite/
 ```
 
 ## Adding a recipe
